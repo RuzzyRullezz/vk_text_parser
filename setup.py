@@ -11,8 +11,8 @@ setup(
     package_dir={'vk_text_parser': 'vk_text_parser'},
     package_data={
         'vk_text_parser': [
-            'vk_text_parser/drivers/linux/*',
-            'vk_text_parser/drivers/mac/*'
+            'drivers/linux/*',
+            'drivers/mac/*'
         ]
     },
     install_requires=[

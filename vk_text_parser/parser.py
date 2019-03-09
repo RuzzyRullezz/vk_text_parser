@@ -41,7 +41,7 @@ class VkTxtParser(object):
             push_counter += 1
             time.sleep(0.5)
 
-    def parse(self, until_id=None):
+    def parse(self):
         public = self.public
         assert public is not NotImplemented
         self.get_full_html(public)
