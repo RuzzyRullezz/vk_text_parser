@@ -14,6 +14,7 @@ class VkTxtParser(object):
     max_offset = 20
     timeout = 2
     content_xpath = '''//div[@id='public_wall']//*[@class='wall_text']/div[count(div)=1]'''
+    ignore_text = 'Показать полностью'
 
     def __init__(self, public):
         self.public = public
@@ -49,4 +50,5 @@ class VkTxtParser(object):
         self.get_full_html(public)
         wall_divs = self.driver.find_elements_by_xpath(self.content_xpath)
         wall_divs.reverse()
-        return map(lambda w: ParsedElement(w.get_attribute('id'), w.text), wall_divs)
+        return filter(lambda t: self.ignore_text.lower() not in t.lower(),
+                      map(lambda w: ParsedElement(w.get_attribute('id'), w.text), wall_divs))
