@@ -50,5 +50,5 @@ class VkTxtParser(object):
         self.get_full_html(public)
         wall_divs = self.driver.find_elements_by_xpath(self.content_xpath)
         wall_divs.reverse()
-        return filter(lambda t: self.ignore_text.lower() not in t.lower(),
+        return filter(lambda t: self.ignore_text.lower() not in t.text.lower(),
                       map(lambda w: ParsedElement(w.get_attribute('id'), w.text), wall_divs))
