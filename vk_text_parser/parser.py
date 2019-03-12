@@ -29,7 +29,9 @@ class VkTxtParser(object):
         self.driver = webdriver.Chrome(executable_path=os.path.abspath(driver_location), chrome_options=chrome_options)
 
     def __del__(self):
-        self.driver.close()
+        driver = getattr(self, 'driver', None)
+        if driver:
+            driver.close()
 
     def get_full_html(self, public):
         self.driver.get('http://vk.com/%s' % public)
