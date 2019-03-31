@@ -20,6 +20,8 @@ class VkTxtParser(object):
         self.public = public
         chrome_options = Options()
         chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage");
         if sys.platform in ('linux', 'linux2'):
             driver_dir = 'linux'
         elif sys.platform == "darwin":
