@@ -13,7 +13,7 @@ class VkTxtParser(object):
     step = 5
     max_offset = 20
     timeout = 2
-    content_xpath = '''//div[@id='public_wall']//*[@class='wall_text']/div[count(div)=1]'''
+    content_xpath = '''//div[@id='public_wall']//*[@class='wall_text'][count(div)=1]/div[count(div)=1]'''
     ignore_text = 'Показать полностью'
 
     def __init__(self, public):
@@ -21,7 +21,7 @@ class VkTxtParser(object):
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage");
+        chrome_options.add_argument("--disable-dev-shm-usage")
         if sys.platform in ('linux', 'linux2'):
             driver_dir = 'linux'
         elif sys.platform == "darwin":
